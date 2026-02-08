@@ -1,0 +1,28 @@
+# Node
+node_modules
+pnpm-lock.yaml
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# Azure Functions local settings
+apps/api/local.settings.json
+
+# Build output
+dist
+build
+.vite
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
