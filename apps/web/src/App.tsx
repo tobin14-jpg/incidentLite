@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IncidentsPage } from "./IncidentsPage";
 
 interface HealthResponse {
   status: string;
@@ -6,7 +7,7 @@ interface HealthResponse {
   time: string;
 }
 function App() {
-  const [health, setHealth] = useState<HealthResponse | { error: string }>();
+  const [, setHealth] = useState<HealthResponse | { error: string }>();
 
   useEffect(() => {
 fetch("/api/health")
@@ -19,10 +20,7 @@ fetch("/api/health")
   }, []);
 
   return (
-    <div>
-      <h1>IncidentLite</h1>
-      <pre>{JSON.stringify(health, null, 2)}</pre>
-    </div>
+    <IncidentsPage />
   );
 }
 
