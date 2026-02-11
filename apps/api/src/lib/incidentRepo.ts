@@ -50,7 +50,14 @@ export function createIncident(input: { title: string; description?: string; sev
 export function patchIncident(id: string, patch: Partial<Pick<Incident, "status" | "severity" | "title" | "description">>) {
   const existing = incidents.get(id);
   if (!existing) return undefined;
-  const updated: Incident = { ...existing, ...patch };
+  const updated: Incident = { ...existing };
+
+  // Only apply keys that are explicitly provided in the patch payload.
+  if (patch.title !== undefined) updated.title = patch.title;
+  if (patch.description !== undefined) updated.description = patch.description;
+  if (patch.severity !== undefined) updated.severity = patch.severity;
+  if (patch.status !== undefined) updated.status = patch.status;
+
   incidents.set(id, updated);
   return updated;
 }
